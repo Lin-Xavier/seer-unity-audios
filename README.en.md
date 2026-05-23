@@ -1,4 +1,4 @@
-# seer-unity-audios
+# Seer BGM Extractor
 
 **Extract background music (BGM) from the Unity client of the game [Seer (赛尔号)](https://seer.61.com).**
 
@@ -31,7 +31,7 @@ Built on top of two open-source projects from [SeerAPI](https://github.com/SeerA
 3. Double-click. Pick a language if you want. Click **Start Extraction**.
 4. When done, click **Open output folder** to see your BGM files.
 
-That's it. The first download is a few hundred MB; subsequent runs only pull what changed.
+The first download is a few hundred MB; subsequent runs only pull what changed.
 
 ## Run from source
 
@@ -90,9 +90,9 @@ Available updaters (download groups):
 |---|---|---|
 | `newseer.default` *(default)* | `DefaultPackage` | General game assets — **most BGM lives here** |
 | `newseer.startup` | `StartupPackage` | Startup / title screen |
-| `newseer.config`  | `ConfigPackage`  | Config data — no audio |
+| `newseer.config`  | `ConfigPackage`  | Config data |
 | `newseer.pet`     | `PetAnimPackage` | Pet animations — mostly SFX |
-| `newseer` *(group)* | all four         | Everything (largest download) |
+| `newseer` *(group)* | all four         | Everything |
 
 See `python extract_seer_bgm.py --help` for the full flag list.
 
@@ -100,8 +100,8 @@ See `python extract_seer_bgm.py --help` for the full flag list.
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────────┐
-│  albi0 update   │──▶│  bundle files    │──▶│  UnityPy AudioClip   │
-│ (newseer.*)     │    │  on local disk   │    │  → WAV files         │
+│  albi0 update   │──▶│  bundle files   │──▶│  UnityPy AudioClip   │
+│ (newseer.*)     │    │  on local disk  │    │  → WAV files        │
 └─────────────────┘    └─────────────────┘    └─────────────────────┘
                                                        │
                                                        ▼
@@ -123,21 +123,21 @@ A clip is treated as BGM if **any** of these are true:
 
 …and clips with SFX-like names (`sfx_`, `voice`, `click`, `hit`, etc.) are excluded.
 
-Bundle detection is **magic-byte based**, not extension-based — YooAsset (which `newseer` uses) sometimes writes hash-named files with no extension, and they're picked up correctly.
+Bundle detection is magic-byte based, not extension-based — YooAsset (which `newseer` uses) sometimes writes hash-named files with no extension, and they're picked up correctly.
 
 ## File layout
 
 ```
 .
 ├── docs/
-│   ├── screenshot-cn.png         ← Chinese GUI screenshot
-│   └── screenshot-en.png         ← English GUI screenshot
-├── README.md                     ← Chinese version (GitHub default)
+│   ├── screenshot-cn.png         
+│   └── screenshot-en.png         
+├── README.md                     ← Chinese version
 ├── README.en.md                  ← English version
 ├── extract_seer_bgm.py           ← core extraction logic + CLI
 ├── seer_bgm_gui.py               ← Tkinter GUI (uses extract_seer_bgm)
-├── make_icon.py                  ← regenerates app_icon.ico
-├── app_icon.ico                  ← committed icon
+├── make_icon.py                  
+├── app_icon.ico                  
 ├── build.bat                     ← Windows build → dist\SeerBGMExtractor.exe
 ├── run_from_source.bat           ← run the GUI without building
 ├── requirements.txt
