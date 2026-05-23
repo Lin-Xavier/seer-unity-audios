@@ -1,4 +1,4 @@
-# seer-unity-audios
+# 赛尔号 BGM 提取器
 
 **从 [赛尔号](https://seer.61.com) Unity 客户端提取游戏背景音乐（BGM）的工具。**
 
@@ -30,7 +30,7 @@
 3. 双击运行。如有需要，可在右上角选择语言。点击**开始提取**。
 4. 完成后点击**打开输出文件夹**查看提取出的 BGM 文件。
 
-完成。首次完整下载约几百 MB，后续运行只会下载有变化的部分。
+首次完整下载约几百 MB，后续运行只会下载有变化的部分。
 
 ## 从源码运行
 
@@ -89,9 +89,9 @@ python extract_seer_bgm.py ./bundles --all-audio -v -o ./all_audio
 |---|---|---|
 | `newseer.default` *（默认）* | `DefaultPackage` | 通用游戏资源——**大部分 BGM 在这里** |
 | `newseer.startup` | `StartupPackage` | 启动 / 标题画面 |
-| `newseer.config`  | `ConfigPackage`  | 配置数据——无音频 |
+| `newseer.config`  | `ConfigPackage`  | 配置数据 |
 | `newseer.pet`     | `PetAnimPackage` | 精灵动画——主要是音效（SFX） |
-| `newseer` *（组）* | 以上四个 | 全部内容（下载量最大） |
+| `newseer` *（组）* | 以上四个 | 全部内容 |
 
 完整参数列表请运行 `python extract_seer_bgm.py --help`。
 
@@ -99,8 +99,8 @@ python extract_seer_bgm.py ./bundles --all-audio -v -o ./all_audio
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────────┐
-│  albi0 下载     │──▶│  本地资源包文件  │──▶│  UnityPy 解码         │
-│ (newseer.*)     │    │                  │    │  AudioClip → WAV     │
+│  albi0 下载     │──▶│  本地资源包文件   │──▶│  UnityPy 解码        │
+│ (newseer.*)     │    │                 │    │  AudioClip → WAV    │
 └─────────────────┘    └─────────────────┘    └─────────────────────┘
                                                        │
                                                        ▼
@@ -122,21 +122,21 @@ python extract_seer_bgm.py ./bundles --all-audio -v -o ./all_audio
 
 同时排除名称符合音效模式的文件（如 `sfx_`、`voice`、`click`、`hit` 等）。
 
-资源包通过**文件魔数（magic bytes）**识别，而非依赖文件扩展名——YooAsset（即 `newseer` 使用的资源系统）有时会写出无扩展名的哈希命名文件，这种情况也能正确识别。
+资源包通过文件魔数（magic bytes）识别，而非依赖文件扩展名——YooAsset（即 `newseer` 使用的资源系统）有时会写出无扩展名的哈希命名文件，这种情况也能正确识别。
 
 ## 文件结构
 
 ```
 .
 ├── docs/
-│   ├── screenshot-cn.png         ← 中文界面截图
-│   └── screenshot-en.png         ← 英文界面截图
-├── README.md                     ← 中文说明（GitHub 默认显示）
+│   ├── screenshot-cn.png         
+│   └── screenshot-en.png         
+├── README.md                     ← 中文说明
 ├── README.en.md                  ← 英文说明
 ├── extract_seer_bgm.py           ← 核心提取逻辑与命令行入口
 ├── seer_bgm_gui.py               ← Tkinter 图形界面
-├── make_icon.py                  ← 重新生成 app_icon.ico
-├── app_icon.ico                  ← 已提交的图标
+├── make_icon.py                  
+├── app_icon.ico                  
 ├── build.bat                     ← Windows 构建脚本
 ├── run_from_source.bat           ← 不构建直接运行 GUI
 ├── requirements.txt
