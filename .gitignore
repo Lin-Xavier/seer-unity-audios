@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.venv/
+venv/
+env/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Built exes (distribute via GitHub Releases instead)
+*.exe
+
+# Project runtime artifacts (user data, not source)
+seer_workspace/
+bgm_out/
+bgm_dummy/
+bgm/
+seer_bgm_config.json
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
